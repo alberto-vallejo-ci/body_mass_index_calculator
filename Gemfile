@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby '2.5.0'
 gem 'rails', '~> 4.2.11'
 
+gem 'bootstrap'
 gem 'coffee-rails'
 gem 'haml-rails'
 gem 'jbuilder'
