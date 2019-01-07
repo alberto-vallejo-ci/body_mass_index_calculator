@@ -16,5 +16,6 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require npm-dependencies
 //= require turbolinks
 //= require_tree .

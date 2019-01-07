@@ -11,3 +11,5 @@
 /log/*
 !/log/.keep
 /tmp
+# Added by npm-rails
+/node_modules

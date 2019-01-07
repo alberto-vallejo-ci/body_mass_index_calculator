@@ -98,6 +98,8 @@ GEM
     multi_json (1.13.1)
     nokogiri (1.10.0)
       mini_portile2 (~> 2.4.0)
+    npm-rails (0.2.1)
+      rails (>= 3.2)
     popper_js (1.14.5)
     rack (1.6.11)
     rack-test (0.6.3)
@@ -183,6 +185,7 @@ DEPENDENCIES
   haml-rails
   jbuilder
   jquery-rails
+  npm-rails
   rails (~> 4.2.11)
   react-rails
   sass-rails
