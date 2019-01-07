@@ -20,6 +20,9 @@ module BodyMassIndexCalculator
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    # Configure sensitive parameters which will be filtered from the log file.
+    config.filter_parameters += [:password]
+
     config.active_record.raise_in_transactional_callbacks = true
   end
 end

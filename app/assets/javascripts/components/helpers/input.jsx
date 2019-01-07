@@ -1,17 +1,21 @@
 const Input = ({className, type, name, id, required, label,
                 invalidFeedback, groupText, onChange}) => {
-  let inputClasses = classNames('form-control', {}, className)
+  const inputClasses = classNames('form-control', {}, className)
+  const inputGroupClasses = classNames({
+    'input-group': groupText
+  })
 
   return (
     <div className='form-group'>
       {label && <label htmlFor={id}>{label}</label>}
 
-      <div className='input-group'>
+      <div className={inputGroupClasses}>
         <input type={type} name={name} id={id} className={inputClasses}
                required={required} onChange={onChange} />
-        <div className='input-group-append'>
+
+        {groupText && <div className='input-group-append'>
           <span className='input-group-text'>{groupText}</span>
-        </div>
+        </div>}
 
         {invalidFeedback && <div className='invalid-feedback'>{invalidFeedback}</div>}
       </div>

@@ -4,6 +4,7 @@ gem 'rails', '~> 4.2.11'
 
 gem 'bootstrap'
 gem 'coffee-rails'
+gem 'devise'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
@@ -11,7 +12,6 @@ gem 'npm-rails'
 gem 'pg', '0.20.0'
 gem 'react-rails'
 gem 'sass-rails'
-gem 'turbolinks'
 gem 'uglifier'
 
 group :development, :test do

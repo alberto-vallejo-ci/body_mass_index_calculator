@@ -1,5 +1,5 @@
-const Button = ({value, primary, onClick}) => {
-  const buttonClasses = classNames('btn', {
+const Button = ({value, primary, onClick, className}) => {
+  const buttonClasses = classNames('btn', className, {
     'btn-primary': primary
   })
 

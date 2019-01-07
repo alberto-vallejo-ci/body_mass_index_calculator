@@ -1,11 +1,12 @@
 class CalculatorForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { weight: null, height: null, type: null, message: null }
+    this.state = { weight: null, height: null, alert: {type: null, message: null} }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDone = this.handleDone.bind(this)
     this.handleFail = this.handleFail.bind(this)
+    this.handleSignOut = this.handleSignOut.bind(this)
   }
 
   handleChange(event) {
@@ -27,20 +28,29 @@ class CalculatorForm extends React.Component {
 
   handleDone(response) {
     const message = `${response.category} (MBI: ${response.bmi})`
-    this.setState({ type: 'success', message: message })
+    this.setState({ alert: {type: 'success', message: message} })
   }
 
   handleFail(response) {
     const message = response.responseJSON.errors[0]
-    this.setState({ type: 'error', message: message })
+    this.setState({ alert: {type: 'error', message: message} })
+  }
+
+  handleSignOut() {
+    $.ajax({
+      type: 'DELETE',
+      url: '/users/sign_out',
+      data: {}
+    })
+    .done(() => location.reload())
   }
 
   render() {
-    const {type, message} = this.state
+    const {type, alert} = this.state
 
     return (
       <div>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} btnValue='Calculate BMI'>
           <Input type='number' name='weight' id='weight' required={true}
                  label='Weight' invalidFeedback='Weight is required.' groupText='kg'
                  onChange={this.handleChange} />
@@ -49,7 +59,11 @@ class CalculatorForm extends React.Component {
                  onChange={this.handleChange} />
         </Form>
 
-        {message && <Message type={type} message={message} />}
+        {alert.message && <Message type={alert.type} message={alert.message} />}
+
+        <div className='login-options--nav-link'>
+          <a onClick={this.handleSignOut}>Sign Out</a>
+        </div>
       </div>
     )
   }
