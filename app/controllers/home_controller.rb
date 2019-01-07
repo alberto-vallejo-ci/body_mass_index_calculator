@@ -3,14 +3,19 @@ class HomeController < ApplicationController
   end
 
   def update
-    result = ::BmiCalculatorService.find_index(weight: safe_params[:weight],
-                                               height: safe_params[:height])
-    render json: result, status: 200
+    service = ::BmiCalculatorService.new(weight: safe_params[:weight],
+                                         height: safe_params[:height])
+    render_result(service.calculate)
   end
 
   private
 
   def safe_params
     params.permit(:weight, :height)
+  end
+
+  def render_result(result)
+    status = result[:errors].blank? ? 200 : 400
+    render json: result, status: status
   end
 end

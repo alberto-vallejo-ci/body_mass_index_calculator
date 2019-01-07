@@ -5,6 +5,7 @@ class CalculatorForm extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDone = this.handleDone.bind(this)
+    this.handleFail = this.handleFail.bind(this)
   }
 
   handleChange(event) {
@@ -21,11 +22,17 @@ class CalculatorForm extends React.Component {
       data: {weight: weight, height: height}
     })
     .done((response) => this.handleDone(response))
+    .fail((response) => this.handleFail(response))
   }
 
   handleDone(response) {
     const message = `${response.category} (MBI: ${response.bmi})`
     this.setState({ type: 'success', message: message })
+  }
+
+  handleFail(response) {
+    const message = response.responseJSON.errors[0]
+    this.setState({ type: 'error', message: message })
   }
 
   render() {

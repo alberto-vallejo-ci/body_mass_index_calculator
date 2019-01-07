@@ -12,10 +12,9 @@ const Input = ({className, type, name, id, required, label,
         <div className='input-group-append'>
           <span className='input-group-text'>{groupText}</span>
         </div>
+
+        {invalidFeedback && <div className='invalid-feedback'>{invalidFeedback}</div>}
       </div>
-
-
-      {invalidFeedback && <div className='invalid-feedback'>{invalidFeedback}</div>}
     </div>
   )
 }

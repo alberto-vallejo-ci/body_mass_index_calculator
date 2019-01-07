@@ -1,7 +1,7 @@
 const Message = ({type, message}) => {
   const elementClasses = classNames('alert', {
     'alert-success': type == 'success',
-    'alert-error': type == 'error',
+    'alert-danger': type == 'error',
   })
 
   return (
