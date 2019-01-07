@@ -1,5 +1,5 @@
 const Home = ({}) => (
-  <div>
+  <div className='home'>
     <p className='home--title'>Body Mass Index Calculator</p>
     <p className='home--description'>
       The Body Mass Index is an attempt to quantify the amount of tissue mass

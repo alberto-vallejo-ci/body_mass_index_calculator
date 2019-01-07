@@ -1,0 +1,44 @@
+very_severe_underweight:
+  category: Very severely underweight
+  from:
+  to: 15
+severe_underweight:
+  category: Severely underweight
+  from: 15.1
+  to: 16
+underweight:
+  category: Underweight
+  from: 16.1
+  to: 18.5
+normal:
+  category: Normal (healthy weight)
+  from: 18.6
+  to: 25
+overweight:
+  category: Overweight
+  from: 25.1
+  to: 30
+obese_i:
+  category: Obese Class I (Moderately obese)
+  from: 30.1
+  to: 35
+obese_ii:
+  category: Obese Class II (Severely obese)
+  from: 35.1
+  to: 40
+obese_iii:
+  category: Obese Class III (Very severely obese)
+  from: 40.1
+  to: 45
+obese_iv:
+  category: Obese Class IV (Morbidly Obese)
+  from: 45.1
+  to: 50
+obese_v:
+  category: Obese Class V (Super Obese)
+  from: 50.1
+  to: 60
+obese_vi:
+  category: Obese Class VI (Hyper Obese)
+  from: 60.1
+  to:
