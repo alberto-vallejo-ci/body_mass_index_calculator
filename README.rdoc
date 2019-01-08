@@ -11,4 +11,4 @@ Languages/Tools/Frameworks Used:
 - Coffee
 - Bootstrap
 - Devise
-- Cucumber Test (WIP)
+- Cucumber Test
