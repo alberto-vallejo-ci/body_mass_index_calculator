@@ -8,11 +8,8 @@ end
 
 When /(?:|I) enter the register information/ do
   within('.sign-up-form') do
-    # find('#email').set('test@example.com')
-    # fill_in '#email', with: 'test@example.com'
-    page.find('#email').set('test@example.com')
-
-    # fill_in 'Password (Min is 6 Characters)', with: 'qwerty123'
-    # fill_in 'Confirm Password', with: 'qwerty123'
+    fill_in 'Email', with: 'test@example.com'
+    fill_in 'Password (Min is 6 Characters)', with: 'qwerty123'
+    fill_in 'Confirm Password', with: 'qwerty123'
   end
 end

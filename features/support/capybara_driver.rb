@@ -18,3 +18,5 @@ Capybara.configure do |config|
   config.default_max_wait_time = 20 # seconds
   config.default_driver = :selenium
 end
+
+Chromedriver.set_version '2.45'
