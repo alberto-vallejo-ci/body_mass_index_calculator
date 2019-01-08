@@ -16,12 +16,13 @@ class Form extends React.Component {
   }
 
   render() {
-    const {id, btnValue} = this.props
+    const {id, btnValue, btnLoading} = this.props
 
     return (
       <form className='needs-validation' noValidate>
         {this.props.children}
-        <Button value={btnValue} primary onClick={this.handleValidate} />
+        <Button value={btnValue} primary onClick={this.handleValidate}
+                loading={btnLoading} />
       </form>
     )
   }

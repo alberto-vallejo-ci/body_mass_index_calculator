@@ -1,7 +1,7 @@
 class CalculatorForm extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { weight: null, height: null, alert: {type: null, message: null} }
+    this.state = { weight: null, height: null, alert: {type: null, message: null}, loading: false }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleDone = this.handleDone.bind(this)
@@ -15,6 +15,7 @@ class CalculatorForm extends React.Component {
   }
 
   handleSubmit() {
+    this.setState({loading: true})
     const {weight, height} = this.state
 
     $.ajax({
@@ -28,12 +29,12 @@ class CalculatorForm extends React.Component {
 
   handleDone(response) {
     const message = `${response.category} (MBI: ${response.bmi})`
-    this.setState({ alert: {type: 'success', message: message} })
+    this.setState({loading: false, alert: {type: 'success', message: message} })
   }
 
   handleFail(response) {
     const message = response.responseJSON.errors[0]
-    this.setState({ alert: {type: 'error', message: message} })
+    this.setState({loading: false, alert: {type: 'error', message: message} })
   }
 
   handleSignOut() {
@@ -46,11 +47,11 @@ class CalculatorForm extends React.Component {
   }
 
   render() {
-    const {type, alert} = this.state
+    const {alert, loading} = this.state
 
     return (
       <div>
-        <Form onSubmit={this.handleSubmit} btnValue='Calculate BMI'>
+        <Form onSubmit={this.handleSubmit} btnValue='Calculate BMI' btnLoading={loading}>
           <Input type='number' name='weight' id='weight' required={true}
                  label='Weight' invalidFeedback='Weight is required.' groupText='kg'
                  onChange={this.handleChange} />

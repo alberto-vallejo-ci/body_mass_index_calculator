@@ -1,9 +1,9 @@
 let LogInForm;
 
 (() => {
-  const RenderLogInForm = ({handleDisplay, handleChange, handleSubmit, alert}) => (
+  const RenderLogInForm = ({handleDisplay, handleChange, handleSubmit, alert, loading}) => (
     <div className='log-in-form'>
-      <Form onSubmit={handleSubmit} btnValue='Log In'>
+      <Form onSubmit={handleSubmit} btnValue='Log In' btnLoading={loading }>
         <Input type='text' name='email' id='email' required={true}
                label='Email' invalidFeedback='Email is required.'
                onChange={handleChange} />
@@ -28,7 +28,7 @@ let LogInForm;
   LogInForm = class extends React.Component {
     constructor(props) {
       super(props)
-      this.state = { email: '', password: '', alert: { type: null, message: null } }
+      this.state = { email: '', password: '', alert: { type: null, message: null }, loading: false }
       this.handleChange = this.handleChange.bind(this)
       this.handleSubmit = this.handleSubmit.bind(this)
       this.handleFail = this.handleFail.bind(this)
@@ -40,6 +40,7 @@ let LogInForm;
     }
 
     handleSubmit() {
+      this.setState({loading: true})
       const {email, password} = this.state
 
       $.ajax({
@@ -52,18 +53,18 @@ let LogInForm;
     }
 
     handleFail(result) {
-      this.setState({alert: { type: 'error', message: result.responseText }})
+      this.setState({loading: false, alert: { type: 'error', message: result.responseText }})
     }
 
     render() {
       const {handleDisplay} = this.props
-      const {alert} = this.state
+      const {alert, loading} = this.state
 
       return (
         <RenderLogInForm handleDisplay={handleDisplay}
                          handleChange={this.handleChange}
                          handleSubmit={this.handleSubmit}
-                         alert={alert}/>
+                         alert={alert} loading={loading}/>
       )
     }
   }
